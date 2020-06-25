@@ -45,3 +45,16 @@ O que avaliamos:
 
 Fique a vontade para nos procurar, o RH vai mandar o contato para dúvidas
 Nos diga o que achou do teste
+
+## Considerações do avaliado
+
+Nos dois primeiros dias optei por tentar aprender o C#, mas lastimo que eu não tenha conseguido proporcionar mais que uma colcha
+de retalhos de códigos do StackOverflow.
+
+Para o projeto opitei em mostrar um pouco mais das características do meu amor pelo desenvolvimento como a construçãode uma interface 
+muito leve, viva e funcional priorizando a usabilidade.
+
+Entendo que minhas escolhas possam ter convergido para o descomprimento de requisitos desejados, mas espero que esse preço tenha 
+valido pelo surpreendimento.
+
+Obrigado pela oportunidade!
