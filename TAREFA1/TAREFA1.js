@@ -8,9 +8,10 @@ function read(input) {
     reader.readAsText(csv)
 }
 reader.onload = function (e) {
-    csvJSON(e.target.result)
+    $("#tbodyTarefa1").html("")
+    csvJSONTarefa1(e.target.result)
 }
-function csvJSON(csv) {
+function csvJSONTarefa1(csv) {
     let lines = csv.split("\n");
     let result = [];
     //var headers = lines[0].split(";");
@@ -82,7 +83,7 @@ function csvJSON(csv) {
                         let keyfound = 0;
                         Object.entries(obj).forEach(([key, value]) => {
                             if (key == titles[j]) {
-                                line += ';"' + value + '"';
+                                line += ';"' + value * 2 + '"';
                                 keyfound = 1;
                                 return false;
                             }

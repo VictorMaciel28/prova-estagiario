@@ -143,30 +143,46 @@
     <section class="awesome-feature-area bg-white section_padding_0_50 clearfix" id="tarefa2">
         <div class="container">
             <div class="row">
-                <div class="get-start-area">
-                    <button type="submit" class="submit" onClick="window.location='#tarefa1';">Ordenar
-                    </button>
-                </div>
                 <div class="col-12">
-                    <!-- Heading Text -->
+                    <!-- Section Heading Area -->
                     <div class="section-heading text-center">
                         <h2>Tarefa 2</h2>
-                        <div class="line-shape"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Index</th>
-                            <th scope="col">Local</th>
-                            <th scope="col">População no último censo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class="get-start-area col-4">
+                    <p>1-Selecione o arquivo mapa.csv:</p>
+                    <input type="file" onchange=read2(this)>
+                    <div class="output"></div>
+                </div>
+                <div class="get-start-area col-4">
+                    <p>2- Ordene por população</p>
+                    <button type="submit" class="submit flex-item" onClick="ordenarCidades()">Ordenar
+                    </button>
+                </div>
+                <div class="get-start-area col-4">
+                    <p>3- Exporte em CSV</p>
+                    <button type="submit" class="submit flex-item" onClick="downloadCSV()">Exportar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Special Description Area -->
+        <div class="special_description_area mt-50">
+            <div class="container">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Local</th>
+                                <th scope="col">População no último censo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyTarefa2">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
@@ -295,7 +311,8 @@
     <!-- Active JS -->
     <script src="js/active.js"></script>
     <!-- Main JS -->
-    <script src="js/main.js"></script>
+    <script src="TAREFA1.js"></script>
+    <script src="../TAREFA2/TAREFA2.js"></script>
 </body>
 
 </html>
