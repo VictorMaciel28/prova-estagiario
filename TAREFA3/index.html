@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Prova Estagiário</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="http://cdntg4.s3-website-sa-east-1.amazonaws.com/wp-content/themes/PandoraBox/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link href="../TAREFA1/style.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="../TAREFA1/css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="colorlib-load"></div>
+    </div>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header_area animated">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- Menu Area Start -->
+                <div class="col-12 col-lg-10">
+                    <div class="menu_area">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <!-- Logo -->
+                            <a class="navbar-brand" href="#">TG4</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar"
+                                aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span
+                                    class="navbar-toggler-icon"></span></button>
+                            <!-- Menu Area -->
+                            <div class="collapse navbar-collapse" id="ca-navbar">
+                                <ul class="navbar-nav ml-auto" id="nav">
+                                    <li class="nav-item"><a class="nav-link" href="../TAREFA1/index.html">Menu de
+                                            Tarefas</a></li>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="https://github.com/VictorMaciel28/prova-estagiario">Github</a></li>
+
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Wellcome Area Start ***** -->
+    <section class="wellcome_area clearfix" id="home">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-10 col-md">
+                    <div class="wellcome-heading">
+                        <h2>Prova Estagiário
+                        </h2>
+                        <h3>TG4</h3>
+                        <p>Tarefa 3</p>
+                    </div>
+                    <div class="get-start-area">
+                        <button type="submit" class="submit" onClick="window.location='#tarefa3';">Começar</button>
+                    </div>
+                </div>
+                <div class="col-2 col-md">
+                    <div class="welcome-thumb wow" data-wow-delay="0.5s">
+                        <img src="img/bg-img/download.png" alt="" style="width:400px;height:260px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Welcome thumb -->
+
+    </section>
+    <!-- ***** Wellcome Area End ***** -->
+
+    <!-- ***** Api Cep Area Start ***** -->
+    <section class="awesome-feature-area bg-white section_padding_0_50 clearfix" id="tarefa3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Section Heading Area -->
+                    <div class="section-heading text-center">
+                        <h2>Tarefa 3</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="get-start-area col-4">
+                    <p>1-Selecione o arquivo CEPs.csv</p>
+                    <input type="file" onchange=read3(this)>
+                    <div class="output"></div>
+                </div>
+                <div class="get-start-area col-4">
+                    <p>3- Exporte em CSV</p>
+                    <button type="submit" class="submit flex-item" onClick="downloadCSVTarefa3()">Exportar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Special Description Area -->
+        <div class="special_description_area mt-50">
+            <div class="container">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">CEP</th>
+                                <th scope="col">Logradouro</th>
+                                <th scope="col">Complemento</th>
+                                <th scope="col">Bairro</th>
+                                <th scope="col">Localidade</th>
+                                <th scope="col">UF</th>
+                                <th scope="col">Unidade</th>
+                                <th scope="col">IBGE</th>
+                                <th scope="col">GIA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyTarefa3">
+                            <div id="infoErr"></div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Api Cep Area End *****====== -->
+
+    </div>
+    </br>
+    </br>
+    </br>
+    <!-- ***** Footer Area Start ***** -->
+    <footer></footer>
+    </footer>
+    <!-- ***** Footer Area Start ***** -->
+
+    <!-- Jquery-2.2.4 JS -->
+    <script src="../TAREFA1/js/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="../TAREFA1/js/popper.min.js"></script>
+    <!-- Bootstrap-4 Beta JS -->
+    <script src="../TAREFA1/js/bootstrap.min.js"></script>
+    <!-- All Plugins JS -->
+    <script src="../TAREFA1/js/plugins.js"></script>
+    <!-- Slick Slider Js-->
+    <script src="../TAREFA1/js/slick.min.js"></script>
+    <!-- Footer Reveal JS -->
+    <script src="../TAREFA1/js/footer-reveal.min.js"></script>
+    <!-- Active JS -->
+    <script src="../TAREFA1/js/active.js"></script>
+    <!-- Main JS -->
+    <script src="../TAREFA1/TAREFA1.js"></script>
+    <script src="../TAREFA2/TAREFA2.js"></script>
+    <script src="../TAREFA3/TAREFA3.js"></script>
+</body>
+
+</html>
