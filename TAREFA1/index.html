@@ -100,8 +100,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="get-start-area">
-                    <button type="submit" class="submit" onClick="window.location='#tarefa1';">Multiplicar População
+                <div class="get-start-area col-4">
+                    <p>1-Selecione o arquivo mapa.csv:</p>
+                    <input type="file" onchange=read(this)>
+                    <div class="output"></div>
+                </div>
+                <div class="get-start-area col-4">
+                    <p>2- Multiplique por 2</p>
+                    <button type="submit" class="submit flex-item" onClick="multiplicarPor2()">Multiplicar
+                        População
+                    </button>
+                </div>
+                <div class="get-start-area col-4">
+                    <p>3- Exporte em CSV</p>
+                    <button type="submit" class="submit flex-item" onClick="downloadCSV()">Exportar
                     </button>
                 </div>
             </div>
@@ -118,7 +130,7 @@
                                 <th scope="col">População no último censo</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbodyTarefa1">
                         </tbody>
                     </table>
                 </div>
@@ -282,6 +294,8 @@
     <script src="js/footer-reveal.min.js"></script>
     <!-- Active JS -->
     <script src="js/active.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
