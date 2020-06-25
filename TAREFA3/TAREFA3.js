@@ -1,60 +1,72 @@
-const reader = new FileReader()
 //Essa função executa ao escolher o arquivo no passo 1
 //O passo 2 e 3 são dependentes em forma de cascata
-function read(input) {
+function read3(input) {
     const csv = input.files[0]
-    reader.readAsText(csv)
-}
-reader.onload = function (e) {
-    $("#tbodyTarefa1").html("")
-    csvJSONTarefa1(e.target.result)
+    reader3 = new FileReader();
+    reader3.readAsText(csv)
+    reader3.onload = function (e) {
+        $("#tbodyTarefa3").html("")
+        csvJSONtarefa3(e.target.result)
+    }
 }
 //Aqui o csv é transformado em JSON e preenche 
 //os dados na tabela
-function csvJSONTarefa1(csv) {
+function csvJSONtarefa3(csv) {
     let lines = csv.split("\n");
     let result = [];
     //var headers = lines[0].split(";");
     headers = ["local", "populacao"]
-
-    //console.log(headers);
+    let fullresposta = []
     for (let i = 1; i < lines.length - 1; i++) {
         let obj = {};
         let currentline = lines[i].split(";");
-        cleanCity = currentline[0].replace(/(^"|"$)/g, '');
-        cleanPopulation = currentline[1].replace(/(^"|"$)/g, '');
-        cleanLine = [cleanCity, cleanPopulation]
+        let cep = (currentline[0]);
+        $("#tbodyTarefa3").html("")
+        $.ajax({
+            url: 'https://viacep.com.br/ws/' + cep + '/json/unicode/',
+            dataType: 'json',
+            success: function (resposta) {
+                let tr = ("<tr>" +
+                    "<td>" + resposta.cep + "</td>" +
+                    "<td>" + resposta.logradouro + "</td>" +
+                    "<td>" + resposta.complemento + "</td>" +
+                    "<td>" + resposta.bairro + "</td>" +
+                    "<td>" + resposta.localidade + "</td>" +
+                    "<td>" + resposta.uf + "</td>" +
+                    "<td>" + resposta.unidade + "</td>" +
+                    "<td>" + resposta.ibge + "</td>" +
+                    "<td>" + resposta.gia + "</td></tr>"
+                )
+                $("#tbodyTarefa3").append(tr)
+                fullresposta.push(resposta)
+                listenerBtnDownloadCSV(fullresposta);
+            },
+            error: function (err) {
+                fullresposta.push({ cep: cep })
+                let terr = ("<tr><td>" + cep + "<td><td>Cep Incorreto</td></tr>")
+                $("#tbodyTarefa3").append(terr)
+                listenerBtnDownloadCSV(fullresposta);
 
-        for (let j = 0; j < headers.length; j++) {
-            obj[headers[j]] = cleanLine[j];
-
-        }
-        result.push(obj);
+            }
+        });
     }
-    $("#tbodyTarefa1").html("")
+
+    $("#tbodyTarefa3").html("")
     result.map((dado, index) => {
-        let tr = ("<tr><td>" + index + "</td>" +
+        let tr = ("<tr>" +
             "<td>" + dado.local + "</td>" +
             "<td>" + dado.populacao + "</td>"
         )
-        $("#tbodyTarefa1").append(tr)
+        $("#tbodyTarefa3").append(tr)
     })
-
-    //Função que executa no clique do botão Multiplicar População
-    multiplicarPor2 = () => {
-        $("#tbodyTarefa1").html("")
-        result.map((dado, index) => {
-            let tr = ("<tr><td>" + index + "</td>" +
-                "<td>" + dado.local + "</td>" +
-                "<td>" + dado.populacao * 2 + "</td>"
-            )
-            $("#tbodyTarefa1").append(tr)
-        })
-
-        //Função que executa ao clicar no botão Exportar
-        //Lê o JSON result criado acima e trasnforma em CSV
-        downloadCSV = () => {
-            JSON2CSV(result);
+    //Função que é executada dentro da promisse e aguarda
+    //o clique de download pelo cliente.
+    //Lê o JSON result criado acima e trasnforma em CSV
+    listenerBtnDownloadCSV = (fullresposta) => {
+        downloadCSVTarefa3 = () => {
+            console.log(fullresposta);
+            JSON2CSV(fullresposta);
+            //Trecho responsável por transformar o JSON em csv
             function JSON2CSV(objArray) {
                 let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
                 let str = '';
@@ -74,20 +86,20 @@ function csvJSONTarefa1(csv) {
                         }
                     })
                 }
-                //Trecho responsável por transformar o JSON em csv
-                let htext = ('"Local";"População no último censo"');
+                let htext = ('CEP;Logradouro;Complemento;Bairro;Localidade;UF;Unidade;IBGE;GIA');
                 str += htext + '\r\n';
                 for (let i = 0; i < array.length; i++) {
-                    let line = '';
+                    var line = '';
                     for (let j = 0; j < titles.length; j++) {
                         let obj = array[i];
                         let keyfound = 0;
                         Object.entries(obj).forEach(([key, value]) => {
                             if (key == titles[j]) {
-                                line += ';"' + value * 2 + '"';
+                                line += ';"' + value + '"';
                                 keyfound = 1;
                                 return false;
                             }
+
                         })
                         if (keyfound == 0) {
                             line += ',"' + '"';   // add null value for this key
@@ -98,22 +110,17 @@ function csvJSONTarefa1(csv) {
                 //Trecho responsável por fazer o download
                 //Cria um elemento a, atribui um link de download, ativa o link e 
                 //exclui o elemento no final
-                var downloadLink = document.createElement("a");
-                var blob = new Blob(["\ufeff", str]);
-                var url = URL.createObjectURL(blob);
+                let downloadLink = document.createElement("a");
+                let blob = new Blob(["\ufeff", str]);
+                let url = URL.createObjectURL(blob);
                 downloadLink.href = url;
-                downloadLink.download = "mapa.csv"; //Nome do arquivo
+                downloadLink.download = "CEPs.csv"; //Nome do arquivo
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
                 return str;
             }
         }
-
     }
-
-
-
-
 
 }

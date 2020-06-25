@@ -9,7 +9,8 @@ function read2(input) {
         csvJSON(e.target.result)
     }
 }
-
+//Aqui o csv é transformado em JSON e preenche 
+//os dados na tabela
 function csvJSON(csv) {
     let lines = csv.split("\n");
     let result = [];
@@ -44,12 +45,12 @@ function csvJSON(csv) {
         $("#tbodyTarefa2").html("")
         bubbleSort(result, 'populacao');
         function bubbleSort(a, par) {
-            var swapped;
+            let swapped;
             do {
                 swapped = false;
-                for (var i = 0; i < a.length - 1; i++) {
+                for (let i = 0; i < a.length - 1; i++) {
                     if (a[i][par] > a[i + 1][par]) {
-                        var temp = a[i];
+                        let temp = a[i];
                         a[i] = a[i + 1];
                         a[i + 1] = temp;
                         swapped = true;
@@ -68,15 +69,16 @@ function csvJSON(csv) {
 
         //Função que executa ao clicar no botão Exportar
         //Lê o JSON result criado acima e trasnforma em CSV
-        downloadCSV = () => {
+        downloadCSVtarefa2 = () => {
             JSON2CSV(result);
+            //Trecho responsável por transformar o JSON em csv
             function JSON2CSV(objArray) {
                 var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
                 var str = '';
                 var line = '';
 
                 let titles = [];
-                for (var i = 0; i < array.length; i++) {
+                for (let i = 0; i < array.length; i++) {
                     let obj = array[i];
                     Object.entries(obj).forEach(([key, value]) => {
                         //console.log('key=', key, "   val="; value );
@@ -91,9 +93,9 @@ function csvJSON(csv) {
                 }
                 let htext = ('"Local";"População no último censo"');
                 str += htext + '\r\n';
-                for (var i = 0; i < array.length; i++) {
-                    var line = '';
-                    for (var j = 0; j < titles.length; j++) {
+                for (let i = 0; i < array.length; i++) {
+                    let line = '';
+                    for (let j = 0; j < titles.length; j++) {
                         let obj = array[i];
                         let keyfound = 0;
                         Object.entries(obj).forEach(([key, value]) => {
@@ -113,9 +115,9 @@ function csvJSON(csv) {
                 //Trecho responsável por fazer o download
                 //Cria um elemento a, atribui um link de download, ativa o link e 
                 //exclui o elemento no final
-                var downloadLink = document.createElement("a");
-                var blob = new Blob(["\ufeff", str]);
-                var url = URL.createObjectURL(blob);
+                let downloadLink = document.createElement("a");
+                let blob = new Blob(["\ufeff", str]);
+                let url = URL.createObjectURL(blob);
                 downloadLink.href = url;
                 downloadLink.download = "mapa.csv"; //Nome do arquivo
                 document.body.appendChild(downloadLink);

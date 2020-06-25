@@ -163,7 +163,7 @@
                 </div>
                 <div class="get-start-area col-4">
                     <p>3- Exporte em CSV</p>
-                    <button type="submit" class="submit flex-item" onClick="downloadCSV()">Exportar
+                    <button type="submit" class="submit flex-item" onClick="downloadCSVtarefa2()">Exportar
                     </button>
                 </div>
             </div>
@@ -192,99 +192,53 @@
     </br>
     </br>
     </br>
-    <!-- ***** Iterations Area Start ***** -->
-    <section class="cool_facts_area clearfix">
-        <div class="container">
-            <div class="row">
-                <!-- Single Cool Fact-->
-                <div class="col-12 col-md-3 col-lg-3">
-                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="counter-area">
-                            <h3><span class="counter">0</span></h3>
-                        </div>
-                        <div class="cool-facts-content">
-                            <!--<i class="ion-arrow-down-a"></i>-->
-                            <p>Elementos</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Cool Fact-->
-                <div class="col-12 col-md-3 col-lg-3">
-                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="counter-area">
-                            <h3><span class="counter">0</span></h3>
-                        </div>
-                        <div class="cool-facts-content">
-                            <p>Reordenações</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Cool Fact-->
-                <div class="col-12 col-md-3 col-lg-3">
-                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="counter-area">
-                            <h3><span class="counter">0</span></h3>
-                        </div>
-                        <div class="cool-facts-content">
-                            <p>Tempo</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Cool Fact-->
-                <div class="col-12 col-md-3 col-lg-3">
-                    <div class="single-cool-fact d-flex justify-content-center wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="counter-area">
-                            <h3><span class="counter">0</span></h3>
-                        </div>
-                        <div class="cool-facts-content">
-                            <i class="ion-ios-star-outline"></i>
-                            <p>Iterações Totais</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- ***** Iterations Area End ***** -->
 
     <!-- ***** Api Cep Area Start ***** -->
-    <section class="app-screenshots-area bg-white section_padding_0_100 clearfix" id="tarefa3">
+    <section class="awesome-feature-area bg-white section_padding_0_50 clearfix" id="tarefa3">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center">
-                    <!-- Heading Text  -->
-                    <div class="section-heading">
-                        <h2>Ceps e Resultados</h2>
-                        <div class="line-shape"></div>
+                <div class="col-12">
+                    <!-- Section Heading Area -->
+                    <div class="section-heading text-center">
+                        <h2>Tarefa 3</h2>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <!-- App Screenshots Slides  -->
-                    <div class="app_screenshots_slides owl-carousel">
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-1.jpg" alt="">
-                        </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-2.jpg" alt="">
-                        </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-3.jpg" alt="">
-                        </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-4.jpg" alt="">
-                        </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-5.jpg" alt="">
-                        </div>
-                        <div class="single-shot">
-                            <img src="img/scr-img/app-3.jpg" alt="">
-                        </div>
-                    </div>
+                <div class="get-start-area col-4">
+                    <p>1-Selecione o arquivo CEPs.csv</p>
+                    <input type="file" onchange=read3(this)>
+                    <div class="output"></div>
+                </div>
+                <div class="get-start-area col-4">
+                    <p>3- Exporte em CSV</p>
+                    <button type="submit" class="submit flex-item" onClick="downloadCSVTarefa3()">Exportar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Special Description Area -->
+        <div class="special_description_area mt-50">
+            <div class="container">
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">CEP</th>
+                                <th scope="col">Logradouro</th>
+                                <th scope="col">Complemento</th>
+                                <th scope="col">Bairro</th>
+                                <th scope="col">Localidade</th>
+                                <th scope="col">UF</th>
+                                <th scope="col">Unidade</th>
+                                <th scope="col">IBGE</th>
+                                <th scope="col">GIA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyTarefa3">
+                            <div id="infoErr"></div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -313,6 +267,7 @@
     <!-- Main JS -->
     <script src="TAREFA1.js"></script>
     <script src="../TAREFA2/TAREFA2.js"></script>
+    <script src="../TAREFA3/TAREFA3.js"></script>
 </body>
 
 </html>
