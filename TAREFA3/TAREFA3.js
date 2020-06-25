@@ -89,7 +89,7 @@ function csvJSONtarefa3(csv) {
                 let htext = ('CEP;Logradouro;Complemento;Bairro;Localidade;UF;Unidade;IBGE;GIA');
                 str += htext + '\r\n';
                 for (let i = 0; i < array.length; i++) {
-                    var line = '';
+                    let line = '';
                     for (let j = 0; j < titles.length; j++) {
                         let obj = array[i];
                         let keyfound = 0;
